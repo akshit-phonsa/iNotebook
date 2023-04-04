@@ -4,4 +4,5 @@ const connectToMongo = async () => {
     await mongoose.connect(mongoURI).then(() => console.log("Connecting TO Mongo Successfully"))
     .catch(err => console.log(err));
 }
+mongoose.set('strictQuery', false)
 module.exports = connectToMongo;

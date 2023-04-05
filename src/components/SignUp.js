@@ -1,39 +1,44 @@
-import React, {useState} from 'react'
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import "./style.css";
 
 const SignUp = (props) => {
-  const [credentials, setCredentials] = useState({name: "",email: "", password: "", cpassword:""}) 
-    let navigate = useNavigate();
+  const [credentials, setCredentials] = useState({
+    name: "",
+    email: "",
+    password: "",
+    cpassword: "",
+  });
+  let navigate = useNavigate();
 
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-        const {name, email, password} = credentials;
-        const response = await fetch("http://localhost:4000/api/auth/createuser", {
-         
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({name,email,password})
-        });
-        const json = await response.json()
-        console.log(json);
-        if (json.success) {
-          // Save the auth token and redirect
-          localStorage.setItem('token', json.authtoken); 
-          navigate("/");
-          props.showAlert("Account Created Successfully","success")
-        }else{
-          props.showAlert("Invalid Details","danger")
-        }
-      }
-
-    const onChange = (e)=>{
-        setCredentials({...credentials, [e.target.name]: e.target.value})
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const { name, email, password } = credentials;
+    const response = await fetch("http://localhost:4000/api/auth/createuser", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ name, email, password }),
+    });
+    const json = await response.json();
+    console.log(json);
+    if (json.success) {
+      // Save the auth token and redirect
+      localStorage.setItem("token", json.authtoken);
+      navigate("/");
+      props.showAlert("Account Created Successfully", "success");
+    } else {
+      props.showAlert("Invalid Details", "danger");
     }
+  };
+
+  const onChange = (e) => {
+    setCredentials({ ...credentials, [e.target.name]: e.target.value });
+  };
   return (
-    <div className='mt-2'>
-            <h2 className='my-3'>Create an Account to use iNotebook</h2>
+    <div className="mt-2">
+      <h2 className="my-3">Create an Account to use iNotebook</h2>
       <form onSubmit={handleSubmit}>
         <div className="my-3">
           <label htmlFor="name" className="form-label">
@@ -42,7 +47,9 @@ const SignUp = (props) => {
           <input
             type="text"
             className="form-control"
-            id="name" name="name" onChange={onChange}
+            id="name"
+            name="name"
+            onChange={onChange}
             aria-describedby="emailHelp"
           />
         </div>
@@ -52,8 +59,10 @@ const SignUp = (props) => {
           </label>
           <input
             type="email"
-            className="form-control" onChange={onChange}
-            id="email" name="email"
+            className="form-control"
+            onChange={onChange}
+            id="email"
+            name="email"
             aria-describedby="emailHelp"
           />
           <div id="emailHelp" className="form-text">
@@ -66,8 +75,12 @@ const SignUp = (props) => {
           </label>
           <input
             type="password"
-            className="form-control" onChange={onChange}
-            id="password" name="password" minLength={5} required
+            className="form-control"
+            onChange={onChange}
+            id="password"
+            name="password"
+            minLength={5}
+            required
           />
         </div>
         <div className="mb-3">
@@ -76,8 +89,12 @@ const SignUp = (props) => {
           </label>
           <input
             type="password"
-            className="form-control" onChange={onChange}
-            id="cpassword" name="cpassword" minLength={5} required
+            className="form-control"
+            onChange={onChange}
+            id="cpassword"
+            name="cpassword"
+            minLength={5}
+            required
           />
         </div>
 

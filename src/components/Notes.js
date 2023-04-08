@@ -8,11 +8,12 @@ import { useNavigate } from "react-router-dom";
 const Notes = (props) => {
   const context = useContext(noteContext);
   let navigate = useNavigate();
-  const { notes, getNotes, editNote } = context;
+  const { notes, getNotes, editNote,crediantials,getUser } = context;
   useEffect(() => {
     if (localStorage.getItem("token")) {
       console.log(localStorage.getItem("token"));
       getNotes();
+      getUser();
     } else {
       navigate("/login");
     }
@@ -24,6 +25,7 @@ const Notes = (props) => {
     etitle: "",
     edescription: "",
     etag: "",
+
   });
   const updateNote = (currentNote) => {
     ref.current.click();
@@ -162,6 +164,7 @@ const Notes = (props) => {
               updateNote={updateNote}
               showAlert={props.showAlert}
               note={note}
+              crediantials={crediantials} getUser={getUser}
             />
           );
         })}

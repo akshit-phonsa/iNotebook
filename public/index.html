@@ -5,7 +5,7 @@
     body {
         background-image: url("photo5.webp");
         background-repeat: no-repeat;
-        background-size:1290px ;
+        background-size:1400px ;
 }
 div{
   color: white;
@@ -27,11 +27,19 @@ body>script{
     />
     <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-    <title>React App</title>
+    <title>iNotebook- Save Your Notes in Cloud</title>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
     <script src="https://kit.fontawesome.com/f50698639f.js" crossorigin="anonymous"></script>
+    <script type="text/javascript"
+        src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js">
+</script>
+<script type="text/javascript">
+   (function(){
+      emailjs.init("-WMc5C05xxofeFTFc");
+   })();
+</script>
   </body>
 </html>

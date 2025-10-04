@@ -6,12 +6,7 @@ connectToMongo();
 const app = express();
 const port = 4000;
 
-const corsOptions = {
-  origin: ["http://localhost:3000", "https://i-notebook-puce.vercel.app"],
-  methods: "GET,POST,PUT,DELETE",
-  credentials: true,
-};
-app.use(cors(corsOptions));
+app.use(cors());
 app.use(express.json());
 
 // Available Routes

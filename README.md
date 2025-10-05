@@ -1,70 +1,184 @@
-# Getting Started with Create React App
+# iNotebook - Your Notebook on the Cloud ☁️
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A full-stack MERN (MongoDB, Express, React, Node.js) application that allows users to create, manage, and store their notes securely in the cloud. Built with modern web technologies and featuring user authentication, this application provides a seamless note-taking experience.
 
-## Available Scripts
+## 🌐 Live Demo
 
-In the project directory, you can run:
+Check out the live application: [https://i-notebook-ivory.vercel.app/](https://i-notebook-ivory.vercel.app/)
 
-### `npm start`
+## 🚀 Features
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- **User Authentication**: Secure signup and login functionality with JWT tokens
+- **Create Notes**: Add new notes with title, description, and tags
+- **Edit Notes**: Update existing notes easily
+- **Delete Notes**: Remove notes you no longer need
+- **Cloud Storage**: All notes are stored securely in MongoDB Atlas
+- **Responsive Design**: Works seamlessly across desktop and mobile devices
+- **Email Integration**: Email functionality using EmailJS
+- **Context API**: Efficient state management using React Context
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## 🛠️ Tech Stack
 
-### `npm test`
+### Frontend
+- **React** (v18.2.0) - UI library
+- **React Router DOM** (v6.10.0) - Client-side routing
+- **EmailJS Browser** (v3.10.0) - Email integration
+- **Bootstrap** - Styling (via CDN)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Backend
+- **Node.js** - Runtime environment
+- **Express.js** (v4.18.2) - Web framework
+- **MongoDB** (v6.13.0) - Database
+- **Mongoose** (v6.10.4) - ODM for MongoDB
+- **JWT** (jsonwebtoken v8.5.1) - Authentication
+- **bcryptjs** (v2.4.3) - Password hashing
+- **express-validator** (v6.15.0) - Input validation
+- **CORS** (v2.8.5) - Cross-origin resource sharing
 
-### `npm run build`
+## 📋 Prerequisites
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Before running this project, make sure you have:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- Node.js (v14 or higher)
+- npm or yarn
+- MongoDB Atlas account (or local MongoDB installation)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## 🔧 Installation
 
-### `npm run eject`
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/akshit-phonsa/iNotebook.git
+   cd iNotebook
+   ```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+2. **Install frontend dependencies**
+   ```bash
+   npm install
+   ```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+3. **Install backend dependencies**
+   ```bash
+   cd backend
+   npm install
+   cd ..
+   ```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+4. **Configure environment variables**
+   
+   Create a `.env` file in the `backend` directory with the following:
+   ```env
+   MONGO_URI=your_mongodb_connection_string
+   PORT=4000
+   CORS_ORIGINS=http://localhost:3000
+   ```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## 🚀 Running the Application
 
-## Learn More
+### Option 1: Run Frontend and Backend Separately
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+**Terminal 1 - Frontend:**
+```bash
+npm start
+```
+The React app will run on [http://localhost:3000](http://localhost:3000)
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+**Terminal 2 - Backend:**
+```bash
+cd backend
+npm start
+```
+The backend server will run on [http://localhost:4000](http://localhost:4000)
 
-### Code Splitting
+### Option 2: Run Both Concurrently
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+```bash
+npm run both
+```
+This will start both the frontend and backend servers simultaneously.
 
-### Analyzing the Bundle Size
+## 📁 Project Structure
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+```
+iNotebook/
+├── backend/
+│   ├── middleware/      # Custom middleware (auth, etc.)
+│   ├── models/          # Mongoose models
+│   ├── routes/          # API routes (auth, notes)
+│   ├── .env            # Environment variables
+│   ├── db.js           # Database connection
+│   ├── index.js        # Backend entry point
+│   └── package.json    # Backend dependencies
+├── public/             # Static files
+├── src/
+│   ├── components/     # React components
+│   │   ├── About.js
+│   │   ├── AddNote.js
+│   │   ├── Alert.js
+│   │   ├── EmailSend.js
+│   │   ├── Home.js
+│   │   ├── Login.js
+│   │   ├── Navbar.js
+│   │   ├── Noteitem.js
+│   │   ├── Notes.js
+│   │   └── SignUp.js
+│   ├── context/        # React Context for state management
+│   │   └── notes/
+│   ├── App.js          # Main App component
+│   └── index.js        # Frontend entry point
+├── package.json        # Frontend dependencies
+└── README.md          # Project documentation
+```
 
-### Making a Progressive Web App
+## 🔐 API Endpoints
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+### Authentication Routes (`/api/auth`)
+- `POST /api/auth/createuser` - Register a new user
+- `POST /api/auth/login` - Login user
 
-### Advanced Configuration
+### Notes Routes (`/api/notes`)
+- `GET /api/notes/fetchallnotes` - Get all notes (requires auth)
+- `POST /api/notes/addnote` - Create a new note (requires auth)
+- `PUT /api/notes/updatenote/:id` - Update a note (requires auth)
+- `DELETE /api/notes/deletenote/:id` - Delete a note (requires auth)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+## 🔒 Security Features
 
-### Deployment
+- Password hashing using bcryptjs
+- JWT-based authentication
+- Protected API routes with middleware
+- Input validation using express-validator
+- CORS configuration for secure cross-origin requests
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+## 📝 Available Scripts
 
-### `npm run build` fails to minify
+- `npm start` - Run the React development server
+- `npm run build` - Build the app for production
+- `npm test` - Run tests
+- `npm run both` - Run both frontend and backend concurrently
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## 🌐 Deployment
+
+The application can be deployed to:
+- **Frontend**: Vercel, Netlify, or any static hosting service
+- **Backend**: Heroku, Railway, Render, or any Node.js hosting platform
+
+Make sure to update the CORS origins and MongoDB connection string for production.
+
+## 🤝 Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request.
+
+## 📄 License
+
+This project is licensed under the ISC License.
+
+## 👨‍💻 Author
+
+**Akshit Phonsa**
+- GitHub: [@akshit-phonsa](https://github.com/akshit-phonsa)
+
+## 🙏 Acknowledgments
+
+- Built with Create React App
+- MongoDB Atlas for cloud database
+- EmailJS for email functionality
